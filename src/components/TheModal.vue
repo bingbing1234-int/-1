@@ -1,0 +1,76 @@
+<!-- 弹窗组件 -->
+<template>
+    <Teleport to="body">
+      <!-- 表示弹窗容器 -->
+      <div class="modal">
+        <!-- 表示遮罩 -->
+        <div class="backdrop"> </div>
+        <!-- 弹窗内容 -->
+        <div class="modalContent">
+          <button class="closeBtn">
+            <TheIcon icon="close"></TheIcon>
+          </button>
+          <slot>
+
+          </slot>
+        </div>
+      </div>
+  
+    </Teleport>
+  </template>
+  
+  <script>
+    import PostActions from './PostActions.vue';
+    import TheAvatar from './TheAvatar.vue';
+    import TheIcon from './TheIcon.vue';
+    export default {
+      components: {
+        TheAvatar,
+        TheIcon,
+        PostActions
+      }
+    }
+  </script>
+  
+  <style scoped>
+    .modal {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      max-width: 100%;
+      left: 0;
+      top: 0;
+      display: grid;
+      place-items: center;
+    }
+  
+    .backdrop {
+      background: rgba(0, 0, 0, 0.56);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+  
+    .modalContent {
+      position: relative;
+      background: white;
+      border-radius: 52px;
+      overflow: hidden;
+    }
+  
+    .closeBtn {
+      position: absolute;
+      background: none;
+      border: none;
+      right: 14px;
+      top: 10px;
+    }
+  
+    .closeBtn svg {
+      width: 54px;
+      height: 54px;
+    }
+  
+  </style>
